@@ -32,6 +32,21 @@ const rollDice = () => {
   return die1 + die2;
 };
 
+const getResult = () => {
+  let result = rollDice();
+
+  if (result >= 7)
+    return {
+      number: result,
+      result: "WON",
+    };
+  else
+    return {
+      number: result,
+      result: "LOST",
+    };
+};
+
 app.get("/", (req, res) => {
   res.json({
     message: "success",
@@ -41,11 +56,7 @@ app.get("/", (req, res) => {
 
 app.get("/dieroll", (req, res) => {
   res.json({
-    items: [
-      {
-        number: rollDice(),
-      },
-    ],
+    items: [getResult()],
   });
 });
 
