@@ -22,6 +22,16 @@ app.use((req, res, next) => {
   next();
 });
 
+// Dice game, lucky seven
+
+const dice = [1, 2, 3, 4, 5, 6];
+
+const rollDice = () => {
+  die1 = Math.floor(Math.random() * 6) + 1;
+  die2 = Math.floor(Math.random() * 6) + 1;
+  return die1 + die2;
+};
+
 app.get("/", (req, res) => {
   res.json({
     message: "success",
@@ -29,13 +39,14 @@ app.get("/", (req, res) => {
   });
 });
 
-// API endpoint to handle form submission
-app.post("/submit-plan", (req, res) => {
-  const selectedPlan = req.body.selectedPlan; // This should match the name attribute in your AMP form
-  console.log("Selected Plan:", selectedPlan);
-
-  // Process the selected plan here and send a response
-  res.json({ status: "success", message: `Plan ${selectedPlan} selected!` });
+app.get("/dieroll", (req, res) => {
+  res.json({
+    items: [
+      {
+        number: rollDice(),
+      },
+    ],
+  });
 });
 
 app.listen(port, () => {
