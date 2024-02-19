@@ -38,12 +38,10 @@ const getResult = () => {
   if (result >= 7)
     return {
       number: result,
-      result: "WON",
     };
   else
     return {
       number: result,
-      result: "LOST",
     };
 };
 
