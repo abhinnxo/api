@@ -53,6 +53,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/dieroll", (req, res) => {
+  console.log(req.params);
   res.json({
     items: [getResult()],
   });
