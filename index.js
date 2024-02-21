@@ -53,7 +53,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/dieroll", (req, res) => {
-  console.log(req.query.email);
+  console.log(req.query);
   res.json({
     items: [getResult()],
   });
