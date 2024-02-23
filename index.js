@@ -23,9 +23,6 @@ app.use((req, res, next) => {
 });
 
 // Dice game, lucky seven
-
-const dice = [1, 2, 3, 4, 5, 6];
-
 const rollDice = () => {
   die1 = Math.floor(Math.random() * 6) + 1;
   die2 = Math.floor(Math.random() * 6) + 1;
@@ -57,6 +54,9 @@ app.get("/dieroll", (req, res) => {
   res.json({
     items: [getResult()],
   });
+});
+app.post("/get-value", (req, res) => {
+  console.log(req.data);
 });
 
 app.listen(port, () => {
