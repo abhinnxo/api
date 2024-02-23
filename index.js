@@ -29,19 +29,6 @@ const rollDice = () => {
   return die1 + die2;
 };
 
-const getResult = () => {
-  let result = rollDice();
-
-  if (result >= 7)
-    return {
-      number: result,
-    };
-  else
-    return {
-      number: result,
-    };
-};
-
 app.get("/", (req, res) => {
   res.json({
     message: "success",
@@ -50,15 +37,35 @@ app.get("/", (req, res) => {
 });
 
 app.get("/dieroll", (req, res) => {
-  console.log(req.query);
+  console.log(req.query.selectedValue);
+
+  const selectedValue = req.query.selectedValue;
+  const dieSum = rollDice(); //12
+  let winStatus = 0;
+
+  switch (selectedValue) {
+    case "1":
+      if (dieSum < 7) winStatus = 1;
+      break;
+    case "2":
+      if (dieSum > 7) winStatus = 1;
+      break;
+    case "3":
+      if (dieSum == 7) winStatus = 1;
+      break;
+
+    default:
+      console.log("some error occured");
+      break;
+  }
+
   res.json({
-    items: [getResult()],
-  });
-});
-app.post("/get-value", (req, res) => {
-  console.log(req.data);
-  res.json({
-    message: "success",
+    items: [
+      {
+        number: dieSum,
+        result,
+      },
+    ],
   });
 });
 
