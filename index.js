@@ -57,6 +57,9 @@ app.get("/dieroll", (req, res) => {
 });
 app.post("/get-value", (req, res) => {
   console.log(req.data);
+  res.json({
+    message: "success",
+  });
 });
 
 app.listen(port, () => {
