@@ -63,7 +63,7 @@ app.get("/dieroll", (req, res) => {
     items: [
       {
         number: dieSum,
-        result,
+        result: winStatus,
       },
     ],
   });
