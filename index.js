@@ -73,13 +73,28 @@ app.get("/dieroll", (req, res) => {
 let randomNumber = () => Math.ceil(Math.random() * 10);
 
 app.get("/roulette", (req, res) => {
-  res.json({
-    items: [
-      {
-        number: randomNumber(),
-      },
-    ],
-  });
+  let selectedOption = req.query.selectedOption;
+  let num = randomNumber();
+
+  if (selectedOption == num) {
+    res.json({
+      items: [
+        {
+          number: num,
+          result: "WON",
+        },
+      ],
+    });
+  } else {
+    res.json({
+      items: [
+        {
+          number: num,
+          result: "LOSS",
+        },
+      ],
+    });
+  }
 });
 
 app.listen(port, () => {
