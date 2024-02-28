@@ -40,7 +40,7 @@ app.get("/dieroll", (req, res) => {
   console.log(req.query.selectedValue);
 
   const selectedValue = req.query.selectedValue;
-  const dieSum = rollDice(); //12
+  const dieSum = rollDice();
   let winStatus = 0;
 
   switch (selectedValue) {
@@ -67,6 +67,12 @@ app.get("/dieroll", (req, res) => {
       },
     ],
   });
+});
+
+// roulette
+let randomNumber = Math.ceil(Math.random() * 10);
+app.get("/roulette", (req, res) => {
+  res, json({ items: randomNumber });
 });
 
 app.listen(port, () => {
