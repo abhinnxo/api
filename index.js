@@ -70,7 +70,7 @@ app.get("/dieroll", (req, res) => {
 });
 
 // roulette
-let randomNumber = () => Math.ceil(Math.random() * 10);
+let randomNumber = () => Math.floor(Math.random() * 11);
 
 app.get("/roulette", (req, res) => {
   let selectedOption = req.query.selectedOption;
