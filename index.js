@@ -81,7 +81,7 @@ app.get("/roulette", (req, res) => {
       items: [
         {
           number: num,
-          result: "WON",
+          result: true,
         },
       ],
     });
@@ -90,7 +90,7 @@ app.get("/roulette", (req, res) => {
       items: [
         {
           number: num,
-          result: "LOSS",
+          result: false,
         },
       ],
     });
