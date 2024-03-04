@@ -97,6 +97,37 @@ app.get("/roulette", (req, res) => {
   }
 });
 
+app.get("/numbers", (req, res) => {
+  res.json({
+    items: [
+      {
+        number: 1,
+      },
+      {
+        number: 2,
+      },
+      {
+        number: 3,
+      },
+      {
+        number: 4,
+      },
+      {
+        number: 5,
+      },
+      {
+        number: 6,
+      },
+      {
+        number: 7,
+      },
+      {
+        number: 8,
+      },
+    ],
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server running at port: ${port}`);
 });
